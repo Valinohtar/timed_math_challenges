@@ -5,21 +5,22 @@ MIN_OPERAND = 3
 MAX_OPERAND = 12
 
 def generate_problem(level):
-    left = random.randint(pow(MIN_OPERAND, level), pow(MAX_OPERAND, level))
-    right = random.randint(pow(MIN_OPERAND, level), pow(MAX_OPERAND, level))
+    left = random.randint(level*MIN_OPERAND, level*MAX_OPERAND)
+    right = random.randint(level*MIN_OPERAND, level*MAX_OPERAND)
     operator = random.choice(OPERATORS)
 
     expr = str(left) + " " + operator + " " + str(right)
     answer = eval(expr)
     return expr, answer
 
-for i in range(1,4):
-    points = 0
+points = 0
+
+for i in range(1,4):    
     lifes = 3
     if lifes < 0:
         break
         print("You have lost.")
-    print("Level 1!\n")
+    print(f"Level {i}!\n")
     while points < 3:
         expr, answer = generate_problem(i)
         print("Give and answer!")
